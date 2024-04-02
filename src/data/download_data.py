@@ -1,5 +1,6 @@
 from ultralytics.utils import yaml_load
 
-yaml = yaml_load("datasets/cfg/VisDrone.yaml")
 
-exec(yaml["download"])
+if __name__ == "__main__":
+    yaml = yaml_load("datasets/cfg/VisDrone.yaml")
+    exec(yaml["download"])

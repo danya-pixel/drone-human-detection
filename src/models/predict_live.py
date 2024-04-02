@@ -1,17 +1,23 @@
-import cv2
 import argparse
+
+import cv2
 from ultralytics import YOLO
+
 
 def main():
     parser = argparse.ArgumentParser(description="Perform YOLOv8 inference on a video.")
-    
-    parser.add_argument("--model_path", type=str, required=True, help="Path to the YOLOv8 model file.")
-    parser.add_argument("--video_path", type=str, required=True, help="Path to the input video file.")
-    
+
+    parser.add_argument(
+        "--model_path", type=str, required=True, help="Path to the YOLOv8 model file."
+    )
+    parser.add_argument(
+        "--video_path", type=str, required=True, help="Path to the input video file."
+    )
+
     args = parser.parse_args()
-    
+
     model = YOLO(args.model_path)
-    
+
     cap = cv2.VideoCapture(args.video_path)
 
     while cap.isOpened():
@@ -31,6 +37,7 @@ def main():
 
     cap.release()
     cv2.destroyAllWindows()
+
 
 if __name__ == "__main__":
     main()

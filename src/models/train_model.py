@@ -7,15 +7,13 @@ if __name__ == "__main__":
     comet_ml.init(project_name="human-detection")
 
     model = YOLO("yolov8n.pt")
-    results = model.train(
+    model.train(
         project="human-detection",
         data="datasets/cfg/VisDrone.yaml",
-        epochs=300,
-        imgsz=640,
+        epochs=256,
         single_cls=True,
-        save_period=1,
-        save_json=True,
-        batch=32,
+        save_period=5,
+        batch=16,
+        imgsz=840,
+        name="yolov8_840px",
     )
-
-    print(results)
