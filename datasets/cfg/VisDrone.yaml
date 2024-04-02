@@ -15,8 +15,7 @@ test: VisDrone2019-DET-test-dev/images # test images (optional)  1610 images
 
 # Classes
 names:
-  0: pedestrian
-  1: people
+  0: people 
 
 # Download script/URL (optional) ---------------------------------------------------------------------------------------
 download: |
@@ -48,7 +47,7 @@ download: |
                   if cls not in [0, 1]:  # Ignore classes other than pedestrian and people
                       continue
                   box = convert_box(img_size, tuple(map(int, row[:4])))
-                  lines.append(f"{cls} {' '.join(f'{x:.6f}' for x in box)}\n")
+                  lines.append(f"{0} {' '.join(f'{x:.6f}' for x in box)}\n")
                   with open(str(f).replace(f'{os.sep}annotations{os.sep}', f'{os.sep}labels{os.sep}'), 'w') as fl:
                       fl.writelines(lines)  # write label.txt
 
