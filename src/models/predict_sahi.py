@@ -13,10 +13,10 @@ def main():
         "--model_path", type=str, required=True, help="Path to the model file."
     )
     parser.add_argument(
-        "--image_path",
+        "--source",
         type=str,
         required=True,
-        help="Path to the image file for inference.",
+        help="Path to the source file for inference.",
     )
     parser.add_argument(
         "--confidence_threshold",
@@ -72,7 +72,7 @@ def main():
 
     result = predict(
         detection_model=detection_model,
-        source=args.image_path,
+        source=args.source,
         slice_height=args.slice_height,
         slice_width=args.slice_width,
         overlap_height_ratio=args.overlap_height_ratio,
